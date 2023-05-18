@@ -1,0 +1,30 @@
+{
+	'before': {
+		'id': 1, 
+		'first_name': 'Bob', 
+		'last_name': 'Frank', 
+		'email': 'XXXXXXXXXXXXXXXX@gmail.com'
+	}, 
+	'after': {
+		'id': 1, 
+		'first_name': 'Bob', 
+		'last_name': 'Frank', 
+		'email': 'BOB@test.com'
+	}, 
+	'source': {
+		'version': '1.9.7.Final', 
+		'connector': 'postgresql', 
+		'name': 'dbserver1', 
+		'ts_ms': 1673113821478, 
+		'snapshot': 'false', 
+		'db': 'postgres', 
+		'sequence': '["36930640","36930928"]',
+		'schema': 'inventory', 
+		'table': 'customers', 
+		'txId': 768, 
+		'lsn': 36930928, 
+		'xmin': None}, 
+	'op': 'u', 
+	'ts_ms': 1673113821967, 
+	'transaction': None
+}

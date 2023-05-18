@@ -1,0 +1,152 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code (description)
+  version: "1.0.1"
+  title: Swagger Rest Article
+consumes:
+  - application/json
+produces:
+  - application/json
+
+basePath: /api
+
+# Paths supported by the server application
+paths:
+  /people:
+    get:
+      operationId: people.read_all
+      tags:
+        - People
+      summary: Read the entire list of people
+      description: Read the list of people (Lecture des données)
+      parameters:
+        - name: length
+          in: query
+          type: integer
+          description: Number of people to get from people
+          required: false
+        - name: offset
+          in: query
+          type: integer
+          description: Offset from beginning of list where to start gathering people
+          required: false
+      responses:
+        200:
+          description: Successfully read people list operation
+          schema:
+            type: array
+            items:
+              properties:
+                id:
+                  type: string
+                fname:
+                  type: string
+                lname:
+                  type: string
+                email:
+                  type: string
+                timestamp:
+                  type: string
+
+    post:
+      operationId: people.create
+      tags:
+        - People
+      summary: Create a person and add it to the people list
+      description: Create a new person in the people list
+      parameters:
+        - name: person
+          in: body
+          description: Person to create
+          required: True
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+                description: Last name of person to create
+              fname:
+                type: string
+                description: First name of person to create
+              lname:
+                type: string
+                description: Last name of person to create
+              email:
+                type: string
+                description: email of person to create
+      responses:
+        201:
+          description: Successfully created person in list
+
+  /people/{id}:
+    get:
+      operationId: people.read_one
+      tags:
+        - People
+      summary: Read one person from the people list
+      description: Read one person from the people list
+      parameters:
+        - name: id
+          in: path
+          description: ID of the person to get from the list
+          type: string
+          required: True
+      responses:
+        200:
+          description: Successfully read person from people list operation
+          schema:
+            properties:
+              id:
+                type: string
+              fname:
+                type: string
+              lname:
+                type: string
+              email:
+                type: string
+              timestamp:
+                type: string
+
+    put:
+      operationId: people.update
+      tags:
+        - People
+      summary: Update a person in the people list
+      description: Update a person in the people list
+      parameters:
+        - name: id
+          in: path
+          description: ID of the person to update in the list
+          type: string
+          required: True
+        - name: person
+          in: body
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+              fname:
+                type: string
+              lname:
+                type: string
+              email:
+                type: string
+      responses:
+        200:
+          description: Successfully updated person in people list
+
+    delete:
+      operationId: people.delete
+      tags:
+        - People
+      summary: Delete a person from the people list
+      description: Delete a person
+      parameters:
+        - name: id
+          in: path
+          type: string
+          required: True
+      responses:
+        200:
+          description: Successfully deleted a person from people list
