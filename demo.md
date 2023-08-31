@@ -37,3 +37,9 @@ ouvrir 3 fenetres iTerm
 -	supprimer une personne
 	-	montrer qu'elle est presente dans le consommateur
 	-	montrer que présente dans big query
+
+8/ Manipulation postgres
+
+docker exec -it cdc_demo-postgres-1 psql -U postgres
+\c postgres
+select * from inventory.customers;
